@@ -1,0 +1,19 @@
+Public Function AddSpace(Txt As String) As String
+'
+' If cell A1 contains: SanFrancisco
+' cell B1: =AddSpace(A1)
+' cell B1: San Francisco
+'
+Dim Hold As String, i As Long
+Hold = Left(Txt, 1)
+For i = 2 To Len(Txt) Step 1
+  If Asc(Mid(Txt, i, 1)) > 96 Then
+    Hold = Hold & Mid(Txt, i, 1)
+  Else
+    Hold = Hold & " " & Mid(Txt, i, 1)
+  End If
+Next i
+AddSpace = Hold
+End Function
+
+
