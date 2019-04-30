@@ -1,0 +1,23 @@
+
+Private Sub AddKeyCodeName_Click()
+'Range("A1").Value = "Hello"
+Dim currkey As String
+Dim Search As String
+
+Range("A1").Select
+Do Until IsEmpty(ActiveCell)
+
+If InStr(ActiveCell.Value, "Key") And Not InStr((ActiveCell.Offset(1, 0).Value), "Code") Then
+        currkey = Left(ActiveCell.Value, Len(ActiveCell.Value) - 3)
+ 
+      ActiveCell.Offset(1, 0).Insert xlShiftDown
+      ActiveCell.Offset(1, 0).Value = currkey & "Code"
+      ActiveCell.Offset(2, 0).Insert xlShiftDown
+      ActiveCell.Offset(2, 0).Value = currkey & "Name"
+      ActiveCell.Offset(3, 0).Select
+   ' Else
+       ' MsgBox Search & Chr(10) & "Record Not Found " & ActiveCell.Value, 48, "Not Found"
+End If
+ActiveCell.Offset(1, 0).Select
+Loop
+End Sub
